@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TEST -->
+<mapper namespace="cn.play.blog.community.entity.TestEntity">
+    <!-- 字段映射 -->
+
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID
+    </sql>
+
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- COMMENT -->
+<mapper namespace="cn.play.blog.community.entity.CommentEntity">
+    <!-- 字段映射 -->
+
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID, USER_ID, ENTITY_TYPE, ENTITY_ID, TARGET_ID, CONTENT, STATUS, CREATE_TIME
+    </sql>
+
+
+</mapper>

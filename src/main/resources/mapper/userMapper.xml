@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- USER -->
+<mapper namespace="cn.play.blog.mapper.UserMapper">
+    <!-- 字段映射 -->
+
+    <sql id="allColumns">
+        id, username, password, salt, email, type, status, activation_code,
+        header_url, create_time
+    </sql>
+
+    <sql id="insertColumns">
+        username, password, salt, email, type,
+        status, activation_code, header_url
+    </sql>
+
+    <select id="selectById"  parameterType="integer" resultType="User">
+
+        select <include refid="allColumns"/>
+        from user
+        where
+        id =#{id}
+    </select>
+
+    <!-- 由于配置 插入的自增 id 会封装回bean中 -->
+    <insert id="insertUser" parameterType="cn.play.blog.community.entity.User" keyProperty="id">
+        insert into user
+        (<include refid="insertColumns"/>)
+        values(
+        #{username},#{password},#{salt},#{email},#{type},
+        #{status},#{activationCode},#{headerUrl})
+    </insert>
+
+    <update id="updateStatus">
+        update user set
+        status = #{status}
+        where
+        id = #{id}
+    </update>
+
+
+    <select id="selectByName" resultType="cn.play.blog.community.entity.User">
+        select <include refid="allColumns"/>
+        from user
+        where username = #{username}
+    </select>
+
+    <select id="selectByEmail" resultType="User">
+        select <include refid="allColumns"/>
+        from user
+        where email = #{email}
+    </select>
+
+    <update id="updateHeader">
+        update user set header_url = #{headerUrl} where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update user set password = #{password} where id = #{id}
+    </update>
+
+</mapper>

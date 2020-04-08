@@ -1,0 +1,46 @@
+# 配置文件就相当于给对应的配置类 的属性注入值
+
+
+# ServerProperties
+server:
+  port: 666
+  #servlet.context-path: /web
+
+
+# thymeleaf 缓存, 默认开启 相当于给 类 ThymeleafProperties 的某个属性注入值
+spring.thymeleaf.cache: false
+
+
+
+# DataSourceProperties 链接池
+spring.datasource:
+  # mysql 链接路径
+  url: jdbc:mysql://localhost:3306/testcode?characterEncoding=utf-8&useSSL=false&serverTimezone=Hongkong
+  # mysql 驱动
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  username: root
+  password: root
+  # 连接池类型
+  type: com.zaxxer.hikari.HikariDataSource
+  # 连接池最大链接数
+  hikari.maximum-pool-size: 15
+  # 最小空闲
+  hikari.minimum-idle: 5
+  hikari.idle-timeout=: 30000
+
+# MybatisProperties
+# 映射文件位置
+mybatis.mapper-locations: classpath:mapper/*.xml
+# 实体类的包名 mapper.xml文件中resultMap的type或者parameterType会使用自定义的pojo
+# 引用实体类不用写包名 <select id="" resultType="User">  User 不写包名
+mybatis.type-aliases-package: cn.play.blog.community.entity
+# useGeneratedKeys设置为 true 时，表示如果插入的表id以自增列为主键，
+# 则允许 JDBC 支持自动生成主键，并可将自动生成的主键id返回。
+# useGeneratedKeys参数只针对 insert 语句生效，默认为 false；
+mybatis.configuration.useGeneratedKeys: true
+#表里 user_id (下划线)和 userId (驼峰) 自动匹配
+mybatis.configuration.mapUnderscoreToCamelCase: true
+
+
+# 日志级别
+logging.level.cn.play.blog: debug
